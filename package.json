@@ -1,0 +1,32 @@
+{
+  "name": "andrewchambers-rrd",
+  "version": "0.0.1",
+  "description": "Query '.rrd' files via RRDTool and RRDSrv.",
+  "scripts": {
+    "build": "grafana-toolkit plugin:build",
+    "test": "grafana-toolkit plugin:test",
+    "dev": "grafana-toolkit plugin:dev",
+    "watch": "grafana-toolkit plugin:dev --watch",
+    "sign": "grafana-toolkit plugin:sign",
+    "start": "yarn watch"
+  },
+  "author": "Andrew Chambers",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@grafana/data": "latest",
+    "@grafana/toolkit": "latest",
+    "@grafana/runtime": "latest",
+    "@grafana/ui": "latest",
+    "@types/lodash": "latest",
+    "@types/react-virtualized-auto-sizer": "^1.0.1"
+  },
+  "dependencies": {
+    "react-virtualized-auto-sizer": "^1.0.1"
+  },
+  "resolutions": {
+    "rxjs": "7.3.0"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "datasource",
+  "name": "RRD",
+  "id": "andrewchambers-rrd-datasource",
+  "metrics": true,
+  "backend": true,
+  "alerting": true,
+  "executable": "gpx_rrd",
+  "info": {
+    "description": "Query '.rrd' files via RRDTool and RRDSrv.",
+    "author": {
+      "name": "Andrew Chambers",
+      "url": "https://acha.ninja"
+    },
+    "keywords": [
+      "rrd",
+      "rrdtool"
+    ],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      {
+        "name": "Website",
+        "url": "https://github.com/grafana/grafana-rrd-datasource"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/andrewchambers/grafana-rrd-datasource/blob/master/LICENSE"
+      }
+    ],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=7.0.0",
+    "plugins": []
+  }
+}
