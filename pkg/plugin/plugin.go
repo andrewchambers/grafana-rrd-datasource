@@ -19,19 +19,19 @@ import (
 )
 
 var (
-	_ backend.QueryDataHandler      = (*SampleDatasource)(nil)
-	_ backend.CheckHealthHandler    = (*SampleDatasource)(nil)
-	_ backend.CallResourceHandler   = (*SampleDatasource)(nil)
-	_ instancemgmt.InstanceDisposer = (*SampleDatasource)(nil)
+	_ backend.QueryDataHandler      = (*RRDDatasource)(nil)
+	_ backend.CheckHealthHandler    = (*RRDDatasource)(nil)
+	_ backend.CallResourceHandler   = (*RRDDatasource)(nil)
+	_ instancemgmt.InstanceDisposer = (*RRDDatasource)(nil)
 )
 
-type SampleDatasource struct{}
+type RRDDatasource struct{}
 
-func NewSampleDatasource(settings backend.DataSourceInstanceSettings) (instancemgmt.Instance, error) {
-	return &SampleDatasource{}, nil
+func NewRRDDatasource(settings backend.DataSourceInstanceSettings) (instancemgmt.Instance, error) {
+	return &RRDDatasource{}, nil
 }
 
-func (d *SampleDatasource) Dispose() {}
+func (d *RRDDatasource) Dispose() {}
 
 func makeHttpClient(settings *backend.DataSourceInstanceSettings) (*http.Client, error) {
 	if settings == nil {
@@ -50,7 +50,7 @@ func makeHttpClient(settings *backend.DataSourceInstanceSettings) (*http.Client,
 	return client, nil
 }
 
-func (d *SampleDatasource) QueryData(ctx context.Context, req *backend.QueryDataRequest) (*backend.QueryDataResponse, error) {
+func (d *RRDDatasource) QueryData(ctx context.Context, req *backend.QueryDataRequest) (*backend.QueryDataResponse, error) {
 	response := backend.NewQueryDataResponse()
 	for _, q := range req.Queries {
 		response.Responses[q.RefID] = d.doDataQuery(ctx, req.PluginContext.DataSourceInstanceSettings, q)
@@ -58,7 +58,7 @@ func (d *SampleDatasource) QueryData(ctx context.Context, req *backend.QueryData
 	return response, nil
 }
 
-func (d *SampleDatasource) doDataQuery(ctx context.Context, settings *backend.DataSourceInstanceSettings, q backend.DataQuery) backend.DataResponse {
+func (d *RRDDatasource) doDataQuery(ctx context.Context, settings *backend.DataSourceInstanceSettings, q backend.DataQuery) backend.DataResponse {
 	var start int64
 	var step int64
 	var end int64
@@ -162,7 +162,7 @@ func (d *SampleDatasource) doDataQuery(ctx context.Context, settings *backend.Da
 	}
 }
 
-func (d *SampleDatasource) CheckHealth(ctx context.Context, req *backend.CheckHealthRequest) (*backend.CheckHealthResult, error) {
+func (d *RRDDatasource) CheckHealth(ctx context.Context, req *backend.CheckHealthRequest) (*backend.CheckHealthResult, error) {
 
 	if req.PluginContext.DataSourceInstanceSettings.URL == "" {
 		return &backend.CheckHealthResult{
@@ -191,7 +191,7 @@ func (d *SampleDatasource) CheckHealth(ctx context.Context, req *backend.CheckHe
 	}, nil
 }
 
-func (d *SampleDatasource) doGet(ctx context.Context, settings *backend.DataSourceInstanceSettings, path string) ([]byte, error) {
+func (d *RRDDatasource) doGet(ctx context.Context, settings *backend.DataSourceInstanceSettings, path string) ([]byte, error) {
 
 	client, err := makeHttpClient(settings)
 	if err != nil {
@@ -224,7 +224,7 @@ func (d *SampleDatasource) doGet(ctx context.Context, settings *backend.DataSour
 	return body, nil
 }
 
-func (d *SampleDatasource) CallResource(ctx context.Context, req *backend.CallResourceRequest, sender backend.CallResourceResponseSender) error {
+func (d *RRDDatasource) CallResource(ctx context.Context, req *backend.CallResourceRequest, sender backend.CallResourceResponseSender) error {
 
 	settings := req.PluginContext.DataSourceInstanceSettings
 

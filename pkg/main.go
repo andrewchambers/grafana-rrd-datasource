@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	if err := datasource.Manage("andrewchambers-rrd-datasource", plugin.NewSampleDatasource, datasource.ManageOpts{}); err != nil {
+	if err := datasource.Manage("andrewchambers-rrd-datasource", plugin.NewRRDDatasource, datasource.ManageOpts{}); err != nil {
 		log.DefaultLogger.Error(err.Error())
 		os.Exit(1)
 	}
