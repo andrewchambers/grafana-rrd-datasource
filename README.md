@@ -5,6 +5,8 @@ A grafana datasource for reading '.rrd' files via [RRDTool](https://oss.oetiker.
 
 With this datasource you will be able to create grafana dashboards and use grafana alerts with RRD file metrics.
 
+[Demo video](https://www.youtube.com/watch?v=BuoPcyJik38).
+
 ## Getting started
 
 A data source backend plugin consists of both frontend and backend components.

@@ -82,7 +82,7 @@ func (d *RRDDatasource) doDataQuery(ctx context.Context, settings *backend.DataS
 			Error: fmt.Errorf("unable to parse query json fields: %s", err),
 		}
 	}
-	payload := string(queryJson.GetStringBytes("payload"))
+	xport := string(queryJson.GetStringBytes("xport"))
 
 	queryPath := fmt.Sprintf(
 		"/api/v1/xport?start=%d&step=%d&end=%d&maxrows=%d&xport=%s",
@@ -90,7 +90,7 @@ func (d *RRDDatasource) doDataQuery(ctx context.Context, settings *backend.DataS
 		step,
 		end,
 		maxRows,
-		url.QueryEscape(payload),
+		url.QueryEscape(xport),
 	)
 
 	responseBytes, err := d.doGet(ctx, settings, queryPath)
@@ -146,7 +146,7 @@ func (d *RRDDatasource) doDataQuery(ctx context.Context, settings *backend.DataS
 			t += dataStep
 		}
 		frame := data.NewFrame(
-			fmt.Sprintf("%s", name),
+			"",
 			data.NewField("Time", nil, timeCol),
 			data.NewField(name, nil, dataCol),
 		)
