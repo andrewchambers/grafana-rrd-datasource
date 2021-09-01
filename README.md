@@ -11,7 +11,7 @@ With this datasource you will be able to create grafana dashboards and use grafa
 
 Install rrdtool and https://github.com/andrewchambers/rrdsrv.
 
-From grafana add a new datasource and point it at your rrdsrv instance.
+From grafana add a new rrd datasource and point it at your rrdsrv instance.
 
 ## Thanks
 
