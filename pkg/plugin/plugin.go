@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"net/url"
 	"time"
@@ -208,7 +209,7 @@ func (d *RRDDatasource) doGet(ctx context.Context, settings *backend.DataSourceI
 	}
 	defer response.Body.Close()
 
-	body, err := io.ReadAll(response.Body)
+	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading request body: %s", err.Error())
 	}
@@ -237,7 +238,7 @@ func (d *RRDDatasource) CallResource(ctx context.Context, req *backend.CallResou
 
 	if req.Body != nil {
 		bodyReader = bytes.NewReader(req.Body)
-	} 
+	}
 
 	request, err := http.NewRequestWithContext(ctx, req.Method, settings.URL+req.URL, bodyReader)
 	if err != nil {
@@ -253,7 +254,7 @@ func (d *RRDDatasource) CallResource(ctx context.Context, req *backend.CallResou
 	}
 	defer res.Body.Close()
 
-	body, err := io.ReadAll(res.Body)
+	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return sender.Send(&backend.CallResourceResponse{
 			Status:  502,
