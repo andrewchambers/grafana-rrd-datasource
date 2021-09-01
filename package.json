@@ -8,6 +8,7 @@
     "dev": "grafana-toolkit plugin:dev",
     "watch": "grafana-toolkit plugin:dev --watch",
     "sign": "grafana-toolkit plugin:sign",
+    "package": "cp -r dist/ andrewchambers-rrd-datasource && zip rrd-datasource.zip andrewchambers-rrd-datasource -r && rm -rfd andrewchambers-rrd-datasource",
     "start": "yarn watch"
   },
   "author": "Andrew Chambers",

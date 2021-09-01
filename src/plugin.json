@@ -31,7 +31,12 @@
         "url": "https://github.com/andrewchambers/grafana-rrd-datasource/blob/master/LICENSE"
       }
     ],
-    "screenshots": [],
+    "screenshots": [
+      {
+        "name": "RRDTool Export",
+        "path": "img/graph.png"
+      }
+    ],
     "version": "%VERSION%",
     "updated": "%TODAY%"
   },
