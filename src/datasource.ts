@@ -8,7 +8,7 @@ export class DataSource extends DataSourceWithBackend<RRDQuery, RRDDataSourceOpt
   }
 
   applyTemplateVariables(query: RRDQuery, scopedVars: ScopedVars): RRDQuery {
-    query.xport = getTemplateSrv().replace(query.xport);
+    query.xport = getTemplateSrv().replace(query.xport, scopedVars);
     return query;
   }
 

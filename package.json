@@ -1,6 +1,6 @@
 {
   "name": "andrewchambers-rrd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Query '.rrd' files via RRDTool and RRDSrv.",
   "scripts": {
     "build": "grafana-toolkit plugin:build",

@@ -43,7 +43,7 @@ export const QueryEditor: ComponentType<Props> = ({ datasource, onChange, onRunQ
                 showLineNumbers={true}
                 showMiniMap={xport.length > 100}
                 value={xport}
-                onBlur={value => setXport(value)}
+                onBlur={(value) => setXport(value)}
               />
             </div>
           )}
