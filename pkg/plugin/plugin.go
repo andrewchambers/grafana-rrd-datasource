@@ -28,7 +28,7 @@ var (
 
 type RRDDatasource struct{}
 
-func NewRRDDatasource(settings backend.DataSourceInstanceSettings) (instancemgmt.Instance, error) {
+func NewRRDDatasource(ctx context.Context, settings backend.DataSourceInstanceSettings) (instancemgmt.Instance, error) {
 	return &RRDDatasource{}, nil
 }
 
